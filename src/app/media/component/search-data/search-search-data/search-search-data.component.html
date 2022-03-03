@@ -1,0 +1,124 @@
+<div class="pageStyle p-2">
+  <div class="displayContainer">
+    <div class="pageTitleContainer pt-2 d-flex justify-content-evenly flex-wrap">
+      <div class="pb-2">
+        <mat-form-field appearance="outline">
+          <mat-label>Title Long</mat-label>
+          <input type="text" matInput [formControl]="titlelongForm" id="titlelong" name="titlelong" placeholder="Title Long" #titlelong (keyup.enter)="searchButton(titlelong.value, titleshort.value, actionstatus.value, limit.value, sort.value)" />
+          <button mat-button *ngIf="titlelongForm.value" matSuffix mat-icon-button aria-label="Clear" (click)="titlelongForm.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <div class="pb-2">
+        <mat-form-field appearance="outline" class="rounded">
+          <mat-label>Title Short</mat-label>
+          <input type="text" matInput [formControl]="titleshortForm" id="titleshort" name="titleshort" placeholder="Title Short" #titleshort (keyup.enter)="searchButton(titlelong.value, titleshort.value, actionstatus.value, limit.value, sort.value)" />
+          <button mat-button *ngIf="titleshortForm.value" matSuffix mat-icon-button aria-label="Clear" (click)="titleshortForm.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <div class="pb-2">
+        <mat-form-field appearance="outline" class="rounded">
+          <mat-label>Action</mat-label>
+          <mat-select placeholder="Action" id="actionstatus" [formControl]="actionstatusForm" name="actionstatus" #actionstatus>
+            <mat-option value="" disabled>Action</mat-option>
+            <!-- Loop through key pair values for list //-->
+            <mat-option *ngFor="let actionItem of actionListItem" [value]="actionItem.selectValue">
+              {{ actionItem.description }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="pb-2">
+        <mat-form-field appearance="outline" class="rounded">
+          <mat-label>Limit</mat-label>
+          <mat-select placeholder="Limit" id="limit" [formControl]="limitForm" name="limit" #limit>
+            <mat-option value="" disabled>Limit</mat-option>
+            <!-- Loop through key pair values for list //-->
+            <mat-option *ngFor="let limitItem of limitListItem" [value]="limitItem.selectValue">
+              {{ limitItem.description }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="pb-2">
+        <mat-form-field appearance="outline" class="rounded">
+          <mat-label>Sort</mat-label>
+          <mat-select placeholder="Sort" id="sort" [formControl]="sortForm" name="sort" #sort>
+            <mat-option value="" disabled>Sort</mat-option>
+            <!-- Loop through key pair values for list //-->
+            <mat-option *ngFor="let sortItem of sortListItem" [value]="sortItem.selectValue">
+              {{ sortItem.description }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="pb-2">
+        <button mat-flat-button class="buttonStyle border-0 rounded" value="Search" (click)="searchButton(titlelong.value, titleshort.value, actionstatus.value, limit.value, sort.value)">
+        <fa-icon class="faIconStyle" [icon]="['fas', 'search']" [fixedWidth]="true">
+        </fa-icon>
+        Search</button>
+      </div>
+    </div>
+    <div class="p-2">
+      <!-- Check if is loading true, then show spinner, else do not display spinner //-->
+      <app-loader *ngIf="isLoading"></app-loader>
+      <!-- Check if media status is set, if so continue to display the data on the page, else do not display anything //-->
+      <div *ngIf="mediaData.Status && displayValue">
+        <!-- Check if status returned success, if so continue to display the data on the page, else go to else block of code and display what returned //-->
+        <div *ngIf="mediaData.Status === 'Success' else elseBlock">
+          <!--  Check if there was data return and return was successful //-->
+          <div *ngIf="mediaData.Count > 0">
+            <app-search-display-data [outputData]="mediaData" *ngIf="mediaData"></app-search-display-data>
+          </div>
+          <!-- Check if there was no data return but the return was successful //-->
+          <div class="cardStyle position-relative border mb-4 rounded overflow-hidden" *ngIf="mediaData.Count <= 0">
+            <div class = "p-2">
+              <div class="cardTitle mb-3 fw-bold text-break">
+                No data found
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Else block to display what was returned because success message did not return in status //-->
+        <ng-template #elseBlock>
+          <div class="cardStyle position-relative border mb-4 rounded overflow-hidden p-2">
+            <div class="p-2 text-center">
+              <div class="errorTitle">
+                Response Error
+              </div>
+              <div class="errorStatus">
+                <!-- Status value //-->
+                {{ mediaData.Status }}
+              </div>
+              <div class="errorStatusMessage">
+                <!-- Message value //-->
+                {{ mediaData.Message }}
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+      <!-- Check to see if OK is true as the API returned a hard error with a message //-->
+      <div *ngIf="!okValue">
+        <div class="cardStyle position-relative border mb-4 rounded overflow-hidden">
+          <div class="p-2 text-center">
+            <div class="errorTitle">
+              API Error
+            </div>
+            <div class="errorStatus">
+              <!-- Status value //-->
+              Status Code: {{ statusValue }}
+            </div>
+            <div class="errorStatusMessage">
+              <!-- Message value //-->
+              Status Message: {{ messageValue }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

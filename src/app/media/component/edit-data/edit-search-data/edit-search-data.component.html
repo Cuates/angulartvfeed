@@ -1,0 +1,89 @@
+<div class="pageStyle p-2">
+  <div class="displayContainer">
+    <div class="pageTitleContainer pt-2 pb-2 d-flex justify-content-evenly flex-wrap">
+      <div class="pb-2">
+        <mat-form-field appearance="outline">
+          <mat-label>Title Long</mat-label>
+          <input matInput required [formControl]="titlelongForm" id="titlelong" name="titlelong" placeholder="Title Long" #titlelong />
+          <button mat-button *ngIf="titlelongForm.value" matSuffix mat-icon-button aria-label="Clear" (click)="titlelongForm.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="titlelongForm.invalid" class="rounded text-center">
+            <div class="p-1">
+              {{ getInputErrorMessage(titlelongForm) }}
+            </div>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="pb-2">
+        <button mat-flat-button class="buttonStyle border-0 rounded"[disabled]="titlelongForm.invalid" value="Search" (click)="searchButton(titlelong.value)">
+          <!-- Add font awesome icon to the page //-->
+          <fa-icon class="faIconStyle" [icon]="['fas', 'search']" [fixedWidth]="true">
+          </fa-icon>
+          Search
+        </button>
+      </div>
+    </div>
+    <div class="p-2">
+      <!-- Check if is loading true, then show spinner, else do not display spinner //-->
+      <app-loader *ngIf="isLoading"></app-loader>
+      <!-- Check if media status is set, if so continue to display the data on the page, else do not display anything //-->
+      <div *ngIf="mediaData.Status && displayValue">
+        <!-- Check if status returned success, if so continue to display the data on the page, else go to else block of code and display what returned //-->
+        <div *ngIf="mediaData.Status === 'Success' else elseBlock">
+          <!--  Check if there was data return and return was successful //-->
+          <div *ngIf="mediaData.Count > 0">
+            <!-- Send data and a function to the child component //-->
+            <app-edit-display-data [outputData]="mediaData" (clearInputField)="clearInputField()" *ngIf="mediaData"></app-edit-display-data>
+          </div>
+          <!-- Check if there was no data return but the return was successful //-->
+          <div class="cardStyle position-relative border mb-2 rounded overflow-hidden" *ngIf="mediaData.Count <= 0">
+            <div class="p-2">
+              <div class="cardTitle mb-2 fw-bold text-break">
+                No data found
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Else block to display what was returned because success message did not return in status //-->
+        <ng-template #elseBlock>
+          <!-- Else block to display what was returned because success message did not return in status //-->
+          <div class=" position-relative border mb-2 rounded overflow-hidden p-2">
+            <div class="p-2 text-center">
+              <div class="errorTitle">
+                Response Error
+              </div>
+              <div class="errorStatus">
+                <!-- Status value //-->
+                {{ mediaData.Status }}
+              </div>
+              <div class="errorStatusMessage">
+                <!-- Message value //-->
+                {{ mediaData.Message }}
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+      <!-- Check to see if OK is true as the API returned a hard error with a message //-->
+      <div *ngIf="!okValue">
+        <div class="cardStyle position-relative border mb-2 rounded overflow-hidden">
+          <div class="p-2 text-center">
+            <div class="errorTitle">
+              API Error
+            </div>
+            <div class="errorStatus">
+              <!-- Status value //-->
+              Status Code: {{ statusValue }}
+            </div>
+            <div class="errorStatusMessage">
+              <!-- Message value //-->
+              Status Message: {{ messageValue }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,113 @@
+<!-- Display all data returned if any //-->
+<div *ngFor="let mediaItems of outputData.Result; let i = index;">
+  <div class="cardStyle position-relative border mb-2 rounded overflow-hidden">
+    <!-- Display the overlay only when a button is pressed //-->
+    <div class="wrapperLoaderRowStyle position-absolute w-100 h-100 opacity-25" *ngIf="mediaItems.isPressedButton">
+    </div>
+    <!-- Display the loader on top of the overlay only when a button is pressed //-->
+    <app-loader class="position-absolute w-100 h-100 d-flex justify-content-center align-items-center" *ngIf="mediaItems.isPressedButton"></app-loader>
+    <div class="p-2">
+      <div class="cardTitle mb-2 fw-bold text-break">
+        <!-- Title long value //-->
+        {{ mediaItems.titlelong }}</div>
+      <div class="cardName mb-2 fw-bold text-break">
+        <!-- Title short value //-->
+        {{ mediaItems.titleshort }}</div>
+      <div class="cardDate mb-2 fw-bold text-break">
+        <!-- Publish date value //-->
+        {{ mediaItems.publishdate }}</div>
+      <div class="cardStatus mb-2 fw-bold text-break">
+        <!-- Action status value //-->
+        {{ mediaItems.actionstatus }}</div>
+      <div class="d-flex flex-wrap justify-content-evenly">
+        <div class="d-flex pb-2">
+          <a href="{{ urlPrefix }}{{ mediaItems.titlelong }}" target="_blank" rel="noopener noreferrer nofollow" class="text-decoration-none">
+            <button mat-flat-button id="view" class="viewButton text-decoration-none rounded p-2" [disabled]="mediaItems.isPressedButton">
+              <!-- Add font awesome icon to the page //-->
+              <fa-icon class="faIconStyle" [icon]="['fas', 'external-link-alt']" [fixedWidth]="true">
+              </fa-icon>
+              View
+            </button>
+          </a>
+        </div>
+        <!-- Only display the button if a certain criteria is met //-->
+        <div class="pb-2" *ngIf="mediaItems.actionstatus === '1' || mediaItems.actionstatus === '0'" #buttonLoad>
+          <button mat-flat-button id="retain" class="retainButton text-decoration-none rounded p-2" (click)="handleAlterationPut(mediaItems.titlelong, mediaItems.titleshort, mediaItems.publishdate, '2', i, mediaItems, 'Retain')" [disabled]="mediaItems.isPressedButton">
+            <!-- Add font awesome icon to the page //-->
+            <fa-icon class="faIconStyle" [icon]="['fas', 'thumbs-up']" [fixedWidth]="true">
+            </fa-icon>
+            Retain
+            <!-- Add font awesome icon to the page with spinner if a certain criteria is met //-->
+            <fa-icon class="faIconStyle" [icon]="['fas', 'spinner']" [spin]="true" [fixedWidth]="true" *ngIf="mediaItems.buttonRetainIsLoading">
+            </fa-icon>
+          </button>
+        </div>
+        <!-- Only display the button if a certain criteria is met //-->
+        <div class="pb-2" *ngIf="mediaItems.actionstatus === '2' || mediaItems.actionstatus === '0'">
+          <button mat-flat-button id="ignore" class="ignoreButton text-decoration-none rounded p-2" (click)="handleAlterationPut(mediaItems.titlelong, mediaItems.titleshort, mediaItems.publishdate, '1', i, mediaItems, 'Ignore')" [disabled]="mediaItems.isPressedButton">
+            <!-- Add font awesome icon to the page //-->
+            <fa-icon class="faIconStyle" [icon]="['fas', 'thumbs-down']" [fixedWidth]="true">
+            </fa-icon>
+            Ignore
+            <!-- Add font awesome icon to the page if a certain criteria is met //-->
+            <fa-icon class="faIconStyle" [icon]="['fas', 'spinner']" [spin]="true" [fixedWidth]="true" *ngIf="mediaItems.buttonIgnoreIsLoading">
+            </fa-icon>
+          </button>
+        </div>
+        <div>
+          <button mat-flat-button id="delete" class="deleteButton text-decoration-none rounded p-2" (click)="handleAlterationDelete(mediaItems.titlelong, i, mediaItems, 'Delete')" [disabled]="mediaItems.isPressedButton">
+            <!-- Add font awesome icon to the page //-->
+            <fa-icon class="faIconStyle" [icon]="['fas', 'trash-alt']" [fixedWidth]="true">
+            </fa-icon>
+            Delete
+            <!-- Add font awesome icon to the page if a certain criteria is met //-->
+            <fa-icon class="faIconStyle" [icon]="['fas', 'spinner']" [spin]="true" [fixedWidth]="true" *ngIf="mediaItems.buttonDeleteIsLoading">
+            </fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Look at the code below to see if it still fits with Status "Error" instead of "Success"//-->
+    <div class="p-2">
+      <!-- Check if media status is set, if so continue to display the data on the page, else do not display anything //-->
+      <div *ngIf="mediaItems.statusResponse && mediaItems.displayValue">
+        <!-- Check if status returned success, if so continue to display the data on the page, else go to else block of code and display what returned //-->
+        <div *ngIf="mediaItems.statusResponse !== 'Success'">
+          <div class="cardStyle position-relative border mb-4 rounded overflow-hidden">
+            <div class="p-2 text-center">
+              <div class="errorTitle">
+                Response Error
+              </div>
+              <div class="errorStatus">
+                <!-- Status value //-->
+                Status: {{ mediaItems.statusResponse }}
+              </div>
+              <div class="errorStatusMessage">
+                <!-- Message value //-->
+                Message: {{ mediaItems.messageResponse }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Check to see if OK is true as the API returned a hard error with a message //-->
+      <div *ngIf="mediaItems.okValue">
+        <div class="cardStyle position-relative border mb-4 rounded overflow-hidden">
+          <div class="p-2 text-center">
+            <div class="errorTitle">
+              API Error
+            </div>
+            <div class="errorStatus">
+              <!-- Status value //-->
+              Status Code: {{ mediaItems.statusValue }}
+            </div>
+            <div class="errorStatusMessage">
+              <!-- Message value //-->
+              Status Message: {{ mediaItems.messageValue }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

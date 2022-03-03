@@ -1,0 +1,78 @@
+<div class="pageStyle p-2">
+  <div class="displayContainer">
+    <div class="pageTitleContainer pb-2 pt-2">
+      <div class="pageTitle p-2 mb-2 fw-bold">
+        <!-- Add font awesome icon to the page //-->
+        <fa-icon class="faIconStyle" [icon]="['fas', 'film']" [fixedWidth]="true">
+        </fa-icon>
+        project_name: Latest {{ limitValue }} Entries
+      </div>
+    </div>
+    <div class="p-2">
+      <!-- Check if is loading true, then show spinner, else do not display spinner //-->
+      <app-loader *ngIf="isLoading"></app-loader>
+      <!-- Check if media status is set, if so continue to display the data on the page, else do not display anything //-->
+      <div *ngIf="mediaData.Status">
+        <!-- Check if status returned success, if so continue to display the data on the page, else go to else block of code and display what returned //-->
+        <div *ngIf="mediaData.Status === 'Success' else elseBlock">
+          <!-- Display all data returned if any //-->
+          <div *ngFor="let mediaItems of mediaData.Result">
+            <div class="cardStyle position-relative border mb-2 rounded overflow-hidden">
+              <div class="p-2">
+                <div class="cardTitle mb-2 fw-bold text-break">
+                  <!-- Title long value //-->
+                  {{ mediaItems.titlelong }}</div>
+                <div class="cardName mb-2 fw-bold text-break">
+                  <!-- Title short value //-->
+                  {{ mediaItems.titleshort }}</div>
+                <div class="cardDate mb-2 fw-bold text-break">
+                  <!-- Publish date value //-->
+                  {{ mediaItems.publishdate }}</div>
+                <div class="cardStatus mb-2 fw-bold text-break">
+                  <!-- Action status value //-->
+                  {{ mediaItems.actionstatus }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Else block to display what was returned because success message did not return in status //-->
+        <ng-template #elseBlock>
+          <div class="cardStyle position-relative border mb-2 rounded overflow-hidden p-2">
+            <div class="p-2 text-center">
+              <div class="errorTitle">
+                Response Error
+              </div>
+              <div class="errorStatus">
+                <!-- Status value //-->
+                {{ mediaData.Status }}
+              </div>
+              <div class="errorStatusMessage">
+                <!-- Message value //-->
+                {{ mediaData.Message }}
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+      <!-- Check to see if OK is true as the API returned a hard error with a message //-->
+      <div *ngIf="!okValue">
+        <div class="cardStyle position-relative border mb-2 rounded overflow-hidden">
+          <div class="p-2 text-center">
+            <div class="errorTitle">
+              API Error
+            </div>
+            <div class="errorStatus">
+              <!-- Status value //-->
+              Status Code: {{ statusValue }}
+            </div>
+            <div class="errorStatusMessage">
+              <!-- Message value //-->
+              Status Message: {{ messageValue }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
