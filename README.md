@@ -472,3 +472,4 @@ Angular TVfeed
 [angular-folder-structure-best-practices](https://www.tektutorialshub.com/angular/angular-folder-structure-best-practices/) <br />
 [angular-project-structure-best-practice](https://stackoverflow.com/questions/52933476/angular-project-structure-best-practice) <br />
 [angular-architecture-best-practices](https://dev-academy.com/angular-architecture-best-practices/) <br />
+[Bootstrap Image](https://getbootstrap.com/docs/5.0/content/images/) <br />
