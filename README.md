@@ -252,7 +252,7 @@ Angular TVfeed
       </pre>
   * Add the following line in the export class section of the component.ts of choice file
     * <pre>
-        title = 'Media Feed';
+        title = 'page_title';
       </pre>
   * Add the following line in the export class constructor() parameter function of the component.ts of choice file
     * <pre>
