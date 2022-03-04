@@ -42,6 +42,7 @@ import { faThumbsUp as faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { faThumbsDown as faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { faExternalLinkAlt as faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { faFilm as faFilm } from '@fortawesome/free-solid-svg-icons';
+import { faExclamationTriangle as faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -128,6 +129,6 @@ export class AppModule {
   // Add font awesome to the constructor
   constructor(library: FaIconLibrary) {
     // Adding the icons to be utilized throughout the web pages
-    library.addIcons(faBars, faTimes, faHome, faInfo, faSearch, faPlus, faEdit, faSpinner, faTrashAlt, faThumbsUp, faThumbsDown, faExternalLinkAlt, faFilm);
+    library.addIcons(faBars, faTimes, faHome, faInfo, faSearch, faPlus, faEdit, faSpinner, faTrashAlt, faThumbsUp, faThumbsDown, faExternalLinkAlt, faFilm, faExclamationTriangle);
   }
 }
