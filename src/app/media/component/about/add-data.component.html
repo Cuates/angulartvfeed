@@ -1,0 +1,146 @@
+<div class="pageStyle p-2">
+  <div class="displayContainer">
+    <div class="pageTitleContainer pb-2 pt-2 d-flex justify-content-evenly flex-wrap">
+      <div class="pb-2">
+        <mat-form-field appearance="outline">
+          <mat-label>Title Long</mat-label>
+          <input matInput required [formControl]="titlelongForm" id="titlelong" name="titlelong" placeholder="Title Long" #titlelong />
+          <button mat-button *ngIf="titlelongForm.value" matSuffix mat-icon-button aria-label="Clear" (click)="titlelongForm.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="titlelongForm.invalid" class="rounded text-center">
+            <div class="p-1">
+              {{ getInputErrorMessage(titlelongForm) }}
+	      <!-- Add font awesome icon to the page //-->
+              <fa-icon class="faIconStyle" [icon]="['fas', 'exclamation-triangle']" [fixedWidth]="true">
+              </fa-icon>
+            </div>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="pb-2">
+        <mat-form-field appearance="outline" class="rounded">
+          <mat-label>Title Short</mat-label>
+          <input matInput required id="titleshort" [formControl]="titleshortForm" name="titleshort" placeholder="Title Short" #titleshort />
+          <button mat-button *ngIf="titleshortForm.value" matSuffix mat-icon-button aria-label="Clear" (click)="titleshortForm.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="titleshortForm.invalid" class="rounded text-center">
+            <div class="p-1">
+              {{ getInputErrorMessage(titleshortForm) }}
+	      <!-- Add font awesome icon to the page //-->
+              <fa-icon class="faIconStyle" [icon]="['fas', 'exclamation-triangle']" [fixedWidth]="true">
+              </fa-icon>
+            </div>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="pb-2">
+        <!-- create the material form field //-->
+        <mat-form-field appearance="outline" class="rounded">
+          <mat-label>Publish Date And Time</mat-label>
+          <!-- Display the date from the type script into the input field //-->
+          <input matInput [ngxMatDatetimePicker]="picker" placeholder="YYYY-MM-DD HH:mm:ss" required name="publishdate" #publishdate [formControl]="dateControl" />
+          <!-- Show hide the date picker when button is clicked  //-->
+          <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+          <!-- Add the time picker to the date picker for end user to interact with //-->
+          <ngx-mat-datetime-picker #picker [showSpinners]="true" [showSeconds]="true" [stepHour]="1" [stepMinute]="1" [stepSecond]="1" [touchUi]="false" [enableMeridian]="false"
+          [disableMinute]="false" [hideTime]="false"></ngx-mat-datetime-picker>
+          <mat-error *ngIf="dateControl.invalid" class="rounded text-center">
+            <div class="p-1">
+              {{ getDateTimeErrorMessage() }}
+	      <!-- Add font awesome icon to the page //-->
+              <fa-icon class="faIconStyle" [icon]="['fas', 'exclamation-triangle']" [fixedWidth]="true">
+              </fa-icon>
+            </div>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="pb-2">
+        <mat-form-field appearance="outline" class="rounded">
+          <mat-label>Action</mat-label>
+          <mat-select placeholder="Action" required id="actionstatus" [formControl]="actionstatusForm" name="actionstatus" #actionstatus>
+            <mat-option value="" disabled>Action</mat-option>
+            <!-- Loop through key pair values for list //-->
+            <mat-option *ngFor="let actionItem of actionListItem" [value]="actionItem.selectValue">
+              {{ actionItem.description }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="actionstatusForm.invalid" class="rounded text-center">
+            <div class="p-1">
+              {{ getSelectErrorMessage(actionstatusForm) }}
+	      <!-- Add font awesome icon to the page //-->
+              <fa-icon class="faIconStyle" [icon]="['fas', 'exclamation-triangle']" [fixedWidth]="true">
+              </fa-icon>
+            </div>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="pb-2">
+        <button mat-flat-button class="buttonStyle border-0 rounded" [disabled]="titlelongForm.invalid || titleshortForm.invalid || dateControl.invalid || actionstatusForm.invalid" value="Add" (click)="addButton(titlelong.value, titleshort.value, publishdate.value, actionstatus.value)">
+          <!-- Add font awesome icon to the page //-->
+          <fa-icon class="faBarsIconStyle" [icon]="['fas', 'plus']" [fixedWidth]="true">
+          </fa-icon>
+          Add
+        </button>
+      </div>
+    </div>
+    <div class="p-2">
+      <!-- Check if is loading true, then show spinner, else do not display spinner //-->
+      <app-loader *ngIf="isLoading"></app-loader>
+      <!-- Check if media result is set, if so continue to display the data on the page, else do not display anything //-->
+      <div *ngIf="dataResponse.Result && displayValue">
+        <!-- Process all data return from the API call if any //-->
+        <div *ngFor="let mediaResponse of dataResponse.Result">
+          <div *ngIf="mediaResponse.Status === 'Success' else elseBlock">
+            <div class="cardStyle position-relative border mb-2 rounded overflow-hidden">
+              <div class="p-2">
+                <div class="cardTitle mb-2 fw-bold text-break">
+                  {{ mediaResponse.Message }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <ng-template #elseBlock>
+            <!-- Check to see if OK is true as the API returned a hard error with a message //-->
+            <div class="cardStyle position-relative border mb-2 rounded overflow-hidden">
+              <div class="p-2 text-center">
+                <div class="errorTitle">
+	          <!-- Add font awesome icon to the page //-->
+                  <fa-icon class="faIconStyle" [icon]="['fas', 'exclamation-triangle']" [fixedWidth]="true">
+                  </fa-icon>
+                </div>
+                <div class="errorStatus">
+                  <!-- Status value //-->
+                  {{ mediaResponse.Status }}</div>
+                <div class="errorStatusMessage">
+                  <!-- Message value //-->
+                  {{ mediaResponse.Message }}</div>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      <!-- Check to see if OK is true as the API returned a hard error with a message //-->
+      <div *ngIf="!okValue">
+        <div class="cardStyle position-relative border mb-2 rounded overflow-hidden">
+          <div class="p-2 text-center">
+            <div class="errorTitle">
+	      <!-- Add font awesome icon to the page //-->
+              <fa-icon class="faIconStyle" [icon]="['fas', 'exclamation-triangle']" [fixedWidth]="true">
+              </fa-icon>
+            </div>
+            <div class="errorStatus">
+              <!-- Status value //-->
+              Status Code: {{ statusValue }}
+            </div>
+            <div class="errorStatusMessage">
+              <!-- Message value //-->
+              Status Message: {{ messageValue }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
