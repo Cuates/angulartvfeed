@@ -11,6 +11,9 @@
           <mat-error *ngIf="titlelongForm.invalid" class="rounded text-center">
             <div class="p-1">
               {{ getInputErrorMessage(titlelongForm) }}
+	      <!-- Add font awesome icon to the page //-->
+              <fa-icon class="faIconStyle" [icon]="['fas', 'exclamation-triangle']" [fixedWidth]="true">
+              </fa-icon>
             </div>
           </mat-error>
         </mat-form-field>
@@ -51,7 +54,9 @@
           <div class=" position-relative border mb-2 rounded overflow-hidden p-2">
             <div class="p-2 text-center">
               <div class="errorTitle">
-                Response Error
+	        <!-- Add font awesome icon to the page //-->
+                <fa-icon class="faIconStyle" [icon]="['fas', 'exclamation-triangle']" [fixedWidth]="true">
+                </fa-icon>
               </div>
               <div class="errorStatus">
                 <!-- Status value //-->
@@ -70,7 +75,9 @@
         <div class="cardStyle position-relative border mb-2 rounded overflow-hidden">
           <div class="p-2 text-center">
             <div class="errorTitle">
-              API Error
+	      <!-- Add font awesome icon to the page //-->
+              <fa-icon class="faIconStyle" [icon]="['fas', 'exclamation-triangle']" [fixedWidth]="true">
+              </fa-icon>
             </div>
             <div class="errorStatus">
               <!-- Status value //-->
@@ -86,3 +93,4 @@
     </div>
   </div>
 </div>
+
