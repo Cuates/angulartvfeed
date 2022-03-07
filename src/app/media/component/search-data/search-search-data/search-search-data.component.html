@@ -25,8 +25,8 @@
           <mat-select placeholder="Action" id="actionstatus" [formControl]="actionstatusForm" name="actionstatus" #actionstatus>
             <mat-option value="" disabled>Action</mat-option>
             <!-- Loop through key pair values for list //-->
-            <mat-option *ngFor="let actionItem of actionListItem" [value]="actionItem.selectValue">
-              {{ actionItem.description }}
+            <mat-option *ngFor="let actionItem of actionListItem.Result" [value]="actionItem['Action Number']">
+              {{ actionItem['Action Description'] }}
             </mat-option>
           </mat-select>
         </mat-form-field>

@@ -59,7 +59,26 @@ export class SearchSearchDataComponent implements OnInit {
     this.titleService.setTitle(this.title);
 
     // Set lists
-    this.actionListItem = this.getActionService.getActionList();
+    // Get information from API
+    this.getActionService.getActionList()
+    .subscribe({
+      next: (response) => {
+        // Next is for successful response message only
+        // Return response from API
+        this.actionListItem = response;
+
+        // // Convert object to JSON string
+        // let responseJSONMessage = JSON.stringify(response);
+
+        // console.log(responseJSONMessage);
+      },
+      // complete: () => {
+      //   // Complete is for successful calls only
+      // },
+      // error: err => {
+      // }
+    });
+
     this.limitListItem = this.getLimitService.getLimitList();
     this.sortListItem = this.getSortService.getSortList();
   }
