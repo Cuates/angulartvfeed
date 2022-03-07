@@ -1,33 +1,27 @@
 import { Injectable } from '@angular/core';
 
+import { HttpClient } from '@angular/common/http';
+
+import { SetVariableService } from '../global/set-variable.service';
+
 @Injectable({
   providedIn: 'root'
 })
 export class GetActionService {
-  // Initialize array string
-  actionList: any = [{}];
-
-  constructor() { }
+  constructor(private httpClient: HttpClient, private setVariableService: SetVariableService) { }
 
   // Get list
   getActionList() {
-    // Set list
-    this.actionList = [
-      {
-        selectValue: '0',
-        description: 'Registered'
-      },
-      {
-        selectValue: '1',
-        description: 'Ignore'
-      },
-      {
-        selectValue: '2',
-        description: 'Retain'
-      }
-    ];
+    // Set parameters for the API call
+    this.setVariableService.params = {
+      actionnumber: '',
+      actiondescription: '',
+      limit: '',
+      sort: 'asc'
+    }
 
-    // Return list
-    return this.actionList;
+    // Return data results
+    // URL, Headers
+    return this.httpClient.get(this.setVariableService.apiActionStatusURL, { headers: this.setVariableService.headers, params: this.setVariableService.params });
   }
 }
