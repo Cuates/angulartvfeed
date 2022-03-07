@@ -11,7 +11,7 @@
           <mat-error *ngIf="titlelongForm.invalid" class="rounded text-center">
             <div class="p-1">
               {{ getInputErrorMessage(titlelongForm) }}
-	            <!-- Add font awesome icon to the page //-->
+	      <!-- Add font awesome icon to the page //-->
               <fa-icon class="faIconStyle" [icon]="['fas', 'exclamation-triangle']" [fixedWidth]="true">
               </fa-icon>
             </div>
@@ -62,8 +62,8 @@
           <mat-select placeholder="Action" required id="actionstatus" [formControl]="actionstatusForm" name="actionstatus" #actionstatus>
             <mat-option value="" disabled>Action</mat-option>
             <!-- Loop through key pair values for list //-->
-            <mat-option *ngFor="let actionItem of actionListItem" [value]="actionItem.selectValue">
-              {{ actionItem.description }}
+            <mat-option *ngFor="let actionItem of actionListItem.Result" [value]="actionItem['Action Number']">
+              {{ actionItem['Action Description'] }}
             </mat-option>
           </mat-select>
           <mat-error *ngIf="actionstatusForm.invalid" class="rounded text-center">
