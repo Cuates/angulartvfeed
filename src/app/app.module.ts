@@ -57,6 +57,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgxMatMomentAdapter } from '@angular-material-components/moment-adapter';
 import {NgxMatDateFormats, NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule, NGX_MAT_DATE_FORMATS, NgxMatDateAdapter } from '@angular-material-components/datetime-picker';
 
+import { NgxScrollTopModule } from 'ngx-scrolltop';
+
 // Setting custom date time display for date time pickers input field
 export const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
   parse: {
@@ -103,7 +105,8 @@ export const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
     NgxMatDatetimePickerModule,
     NgxMatTimepickerModule,
     NgxMatNativeDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxScrollTopModule
   ],
   providers: [
     GetDataService,
