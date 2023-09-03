@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "project_name": {
+    "angulartvfeed": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -42,7 +42,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/project_name",
+            "outputPath": "dist/angulartvfeed",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -98,10 +98,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "project_name:build:production"
+              "browserTarget": "angulartvfeed:build:production"
             },
             "development": {
-              "browserTarget": "project_name:build:development"
+              "browserTarget": "angulartvfeed:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -109,7 +109,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "project_name:build"
+            "browserTarget": "angulartvfeed:build"
           }
         },
         "test": {
@@ -126,13 +126,18 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+	      "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+	    ]
           }
         }
       }
     }
   },
-  "defaultProject": "project_name"
+  "cli": {
+    "analytics": false
+  }
 }
