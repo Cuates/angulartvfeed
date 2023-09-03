@@ -2,13 +2,11 @@
   <!-- Set the off canvas header //-->
   <div class="offcanvas-header">
     <div class="navMenuTitle py-3 d-flex fw-bold justify-content-between align-items-center offcanvas-title" id="offcanvasWithBackdropMenuLabel">
-      project_name Menu
+      TV Feeds Menu
     </div>
     <div class="faBarsIconContainer d-flex justify-content-end">
-      <span role="button" aria-pressed="false" tabindex="0" data-bs-dismiss="offcanvas" aria-label="Close">
-        <!-- Add font awesome icon to the page //-->
-        <fa-icon class="navFAIconStyle" [icon]="['fas', 'times']" [fixedWidth]="true">
-        </fa-icon>
+      <span class="navIconStyle" role="button" aria-pressed="false" tabindex="0" data-bs-dismiss="offcanvas" aria-label="Close">
+        <mat-icon>close</mat-icon>
       </span>
     </div>
   </div>
@@ -19,53 +17,52 @@
       <li class="listNavMenuTop listNavMenuBottom" [routerLinkActive]="['activeLink']" [routerLinkActiveOptions]="{matrixParams: 'ignored', queryParams: 'ignored', fragment: 'ignored', paths: 'exact'}">
         <!-- Add a router link to navigate to a specific site //-->
         <a routerLink="" data-bs-dismiss="offcanvas" aria-label="Close" class="text-decoration-none py-3 d-block">
-          <!-- Add font awesome icon to the page //-->
-          <fa-icon class="faIconStyle" [icon]="['fas', 'home']" [fixedWidth]="true">
-          </fa-icon>
-          Home
+          <span class="d-flex justify-content-left align-items-center">
+            <mat-icon>home</mat-icon>
+            &nbsp;Home
+          </span>
         </a>
       </li>
       <!-- Set the router link active style after it has been clicked. Also, make sure to match the exact router link site //-->
       <li class="listNavMenuBottom" [routerLinkActive]="['activeLink']" [routerLinkActiveOptions]="{matrixParams: 'ignored', queryParams: 'ignored', fragment: 'ignored', paths: 'exact'}">
         <!-- Add a router link to navigate to a specific site //-->
         <a routerLink="/search" data-bs-dismiss="offcanvas" aria-label="Close" class="text-decoration-none py-3 d-block">
-          <!-- Add font awesome icon to the page //-->
-          <fa-icon class="faIconStyle" [icon]="['fas', 'search']" [fixedWidth]="true">
-          </fa-icon>
-          Search
+          <span class="d-flex justify-content-left align-items-center">
+            <mat-icon>search</mat-icon>
+            &nbsp;Search
+          </span>
         </a>
       </li>
       <!-- Set the router link active style after it has been clicked. Also, make sure to match the exact router link site //-->
       <li class="listNavMenuBottom" [routerLinkActive]="['activeLink']" [routerLinkActiveOptions]="{matrixParams: 'ignored', queryParams: 'ignored', fragment: 'ignored', paths: 'exact'}">
         <!-- Add a router link to navigate to a specific site //-->
         <a routerLink="/add" data-bs-dismiss="offcanvas" aria-label="Close" class="text-decoration-none py-3 d-block">
-          <!-- Add font awesome icon to the page //-->
-          <fa-icon class="faIconStyle" [icon]="['fas', 'plus']" [fixedWidth]="true">
-          </fa-icon>
-          Add
+          <span class="d-flex justify-content-left align-items-center">
+            <mat-icon>add</mat-icon>
+            &nbsp;Add
+          </span>
         </a>
       </li>
       <!-- Set the router link active style after it has been clicked. Also, make sure to match the exact router link site //-->
       <li class="listNavMenuBottom" [routerLinkActive]="['activeLink']" [routerLinkActiveOptions]="{matrixParams: 'ignored', queryParams: 'ignored', fragment: 'ignored', paths: 'exact'}">
         <!-- Add a router link to navigate to a specific site //-->
         <a routerLink="/edit" data-bs-dismiss="offcanvas" aria-label="Close" class="text-decoration-none py-3 d-block">
-          <!-- Add font awesome icon to the page //-->
-          <fa-icon class="faIconStyle" [icon]="['fas', 'edit']" [fixedWidth]="true">
-          </fa-icon>
-          Edit
+          <span class="d-flex justify-content-left align-items-center">
+            <mat-icon>edit</mat-icon>
+            &nbsp;Edit
+          </span>
         </a>
       </li>
       <!-- Set the router link active style after it has been clicked. Also, make sure to match the exact router link site //-->
       <li class="listNavMenuBottom" [routerLinkActive]="['activeLink']" [routerLinkActiveOptions]="{matrixParams: 'ignored', queryParams: 'ignored', fragment: 'ignored', paths: 'exact'}">
         <!-- Add a router link to navigate to a specific site //-->
         <a routerLink="/about" data-bs-dismiss="offcanvas" aria-label="Close" class="text-decoration-none py-3 d-block">
-          <!-- Add font awesome icon to the page //-->
-          <fa-icon class="faIconStyle" [icon]="['fas', 'info']" [fixedWidth]="true">
-          </fa-icon>
-          About
+          <span class="d-flex justify-content-left align-items-center">
+            <mat-icon fontSet="material-icons-outlined">info_outlined</mat-icon>
+            &nbsp;About
+          </span>
         </a>
       </li>
     </ul>
   </div>
 </div>
-

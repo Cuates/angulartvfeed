@@ -6,25 +6,25 @@
 
 // Router Active Link with inner anchor style
 .activeLink>a {
-  color: #9BDDFF;
+  color: #9BDDFF !important;
 }
 
 // Navigation Menu Style
 .navMenu {
-  background-color: #3B5460;
+  background-color: #3B5460 !important;
 }
 
 // Navigation Menu Title Style
 .navMenuTitle {
-  color: #F8F8FF;
+  color: #F8F8FF !important;
   padding-top: 0.75em;
   padding-bottom: 0.75em;
   font-size: 1.4em;
 }
 
-// Style of the font awesome icon on the navigation menu page
-.navFAIconStyle {
-  color: #F8F8FF;
+// Style of the icon on the navigation menu page
+.navconStyle {
+  color: #F8F8FF !important;
   font-size: 1.2em;
 }
 
@@ -39,20 +39,20 @@ ul {
 
 // Anchor Style
 a {
-  color: #DCD0FF;
+  color: #DCD0FF !important;
   width: 100%;
 }
 
 // List Style Top Border Style
 .listNavMenuTop {
-  border-top: 0.1em #D400D4 solid;
+  border-top: 0.1em #D400D4 solid !important;
   font-size: 1em;
   font-weight: bold;
 }
 
 // List Style Bottom Border Style
 .listNavMenuBottom {
-  border-bottom: 0.1em #D400D4 solid;
+  border-bottom: 0.1em #D400D4 solid !important;
   font-size: 1em;
   font-weight: bold;
 }
