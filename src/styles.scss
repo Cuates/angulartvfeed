@@ -4,7 +4,7 @@
 $headerSize: 2.33em;
 
 // Footer height
-$footerSize: 2.33em;
+$footerSize: 1.3em;
 
 // Font family
 $fontFamily: 'Times New Roman', Times, serif !important;
@@ -16,28 +16,35 @@ body {
 
 body {
   margin: 0;
+  padding: 0;
   font-family: $fontFamily;
+}
+
+#container {
+  min-height: 100%;
+  position: relative;
 }
 
 // Middle page style
 .pageStyle {
-  background-color: #1D398A;
+  background-color: #1D398A !important;
   min-height: calc(100vh - $headerSize - $footerSize); // minimum height calculations viewport height minus header minus footer
+  padding-bottom: 3.63em;
   // min-height: calc(100vh - $headerSize - $footerSize); // minimum height calculations viewport height minus header minus footer
 }
 
 /* For firefox */
-@-moz-document url-prefix() {
-  .pageStyle {
-    background-color: #1D398A;
-    min-height: calc(101.1vh - $headerSize - $footerSize); // minimum height calculations viewport height minus header minus footer
-  }
-}
+// @-moz-document url-prefix() {
+//  .pageStyle {
+//    background-color: #1D398A !important;
+//    min-height: calc(100vh); // minimum height calculations viewport height minus header minus footer
+//  }
+// }
 
 // Middle page display container Style
 .displayContainer {
-  background-color: #D1BEA8;
-  color: #FEF2C6;
+  background-color: #D1BEA8 !important;
+  color: #FEF2C6 !important;
 }
 
 // Page Title Style
@@ -47,19 +54,14 @@ body {
 
 // Extract Search Container Style
 .pageTitleContainer {
-  background-color: #065E45;
-  color: #FEF2C6;
-}
-
-// Style of the font awesome icon on the page
-.faIconStyle {
-  font-size: 1.2em;
+  background-color: #065E45 !important;
+  color: #FEF2C6 !important;
 }
 
 // Card Style
 .cardStyle {
-  background-color: #364051;
-  color: #FEF2C6;
+  background-color: #364051 !important;
+  color: #FEF2C6 !important;
 }
 
 // Card Title Style
@@ -84,31 +86,31 @@ body {
 
 // Create the loader gif via CSS
 .wrapperLoaderRowStyle {
-  background-color: #000000;
+  background-color: #000000 !important;
 }
 
 // Button style
 .buttonStyle {
-  background-color: #6B7280;
-  color: #000000;
+  background-color: #6B7280 !important;
+  color: #000000 !important;
 }
 
 // Error Status Style
 .errorTitle {
   font-size: 1.3em;
-  color: #FF0000;
+  color: #FF0000 !important;
 }
 
 // Error Status Style
 .errorStatus {
   font-size: 1.3em;
-  color: #FF0000;
+  color: #FF0000 !important;
 }
 
 // Error Status Message Style
 .errorStatusMessage {
   font-size: 1.3em;
-  color: #FF0000;
+  color: #FF0000 !important;
 }
 
 mat-form-field {
@@ -116,35 +118,38 @@ mat-form-field {
   font-family: $fontFamily;
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of select that may no longer apply for the MDC version. */
 mat-select {
   font-family: $fontFamily;
 }
 
-.mat-button, .mat-flat-button, .mat-raised-button {
+.mat-mdc-button, .mat-mdc-unelevated-button, .mat-mdc-raised-button {
   font-family: $fontFamily;
 }
 
 // Mat form field style
-mat-form-field.mat-form-field {
+mat-form-field.mat-mdc-form-field {
   // font-size: .3em;
-  background-color: #065E45;
-  color: #000000;
+  background-color: #065E45 !important;
+  color: #000000 !important;
 }
 
 // Set mat form field subscript wrapper style
+/* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
 div.mat-form-field-subscript-wrapper {
-  background-color: #f7d6da;
+  background-color: #F7D6DA !important;
   border-radius: 3px;
 }
 
 // Set mat error style
-.mat-error {
-  color: #842028;
+.mat-mdc-form-field-error {
+  color: #842028 !important;
 }
 
 // Set the style for input field
+/* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
 div.mat-form-field-flex {
-  background-color: #FEF2C6;
+  background-color: #FEF2C6 !important;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   border-bottom-left-radius: 6px;
@@ -153,33 +158,35 @@ div.mat-form-field-flex {
 
 // Entire calendar style
 ngx-mat-calendar {
-  background-color: #FEF2C6;
-  color: #000000;
+  background-color: #FEF2C6 !important;
+  color: #000000 !important;
 }
 
 // Entire time style
 div.time-container {
-  background-color: #FEF2C6;
-  color: #000000;
+  background-color: #FEF2C6 !important;
+  color: #000000 !important;
 }
 
 // Entire action style
 div.actions {
-  background-color: #FEF2C6;
-  color: #000000;
+  background-color: #FEF2C6 !important;
+  color: #000000 !important;
 }
 
 // // Set the border style for not touched input field
 // mat-form-field.mat-form-field-appearance-outline.mat-form-field-can-float .mat-form-field-outline-thick {
-//   color: white;
+//   color: white !important;
 // }
 
 // Border for not touched input field
+/* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
 .mat-form-field-appearance-outline .mat-form-field-outline {
-  color: #FEF2C6;
+  color: #FEF2C6 !important;
 }
 
 // Border for not touched input field hover
+/* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
 .mat-form-field-appearance-outline .mat-form-field-outline-thick {
-  color: #FEF2C6;
+  color: #FEF2C6 !important;
 }
