@@ -14,7 +14,7 @@ import { GetDataService } from '../../share/service/api/get-data.service';
 })
 export class DisplayDataComponent implements OnInit {
   // Initialize parameters
-  title = 'project_name';
+  title = 'TV Feed';
 
   // Set the media data to empty array
   mediaData: any = [];
@@ -105,5 +105,4 @@ export class DisplayDataComponent implements OnInit {
       }
     });
   }
-
 }

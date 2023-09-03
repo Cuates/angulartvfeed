@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Input, Output, EventEmitter } from '@angular/core';
 
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 
 import { SetVariableService } from '../../../share/service/global/set-variable.service';
 import { PutDataService } from '../../../share/service/api/put-data.service';
@@ -25,7 +25,7 @@ export class EditDisplayDataComponent implements OnInit {
   constructor(private setVariableService: SetVariableService, private putDataService: PutDataService) { }
 
   // Set form control with possible validators
-  titleshortForm = new FormControl({'value': '', disabled: false}, [Validators.required, Validators.pattern(this.setVariableService.titleshortFormPattern)]);
+  titleshortForm = new UntypedFormControl({'value': '', disabled: false}, [Validators.required, Validators.pattern(this.setVariableService.titleshortFormPattern)]);
 
   // Set input field back to empty string when button is pressed
   inputTitleShort:string = '';
@@ -106,7 +106,7 @@ export class EditDisplayDataComponent implements OnInit {
         if (mediaItems.statusResponse === 'Success') {
           // Remove row from view
           this.removeField(row);
-          this.titleshortForm = new FormControl({'value': '', disabled: false}, [Validators.required, Validators.pattern(this.setVariableService.titleshortFormPattern)]);
+          this.titleshortForm = new UntypedFormControl({'value': '', disabled: false}, [Validators.required, Validators.pattern(this.setVariableService.titleshortFormPattern)]);
 
           // Call to parent function
           this.clearInputField.emit();

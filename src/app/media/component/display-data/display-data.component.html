@@ -1,11 +1,11 @@
-<div class="pageStyle p-2">
+<div class="pageStyle pt-2 ps-2 pe-2">
   <div class="displayContainer">
     <div class="pageTitleContainer pb-2 pt-2">
       <div class="pageTitle p-2 mb-2 fw-bold">
-        <!-- Add font awesome icon to the page //-->
-        <fa-icon class="faIconStyle" [icon]="['fas', 'film']" [fixedWidth]="true">
-        </fa-icon>
-        project_name: Latest {{ limitValue }} Entries
+        <span class="d-flex justify-content-left align-items-center">
+          <mat-icon>live_tv</mat-icon>
+          &nbsp;TV: Latest {{ limitValue }} Entries
+        </span>
       </div>
     </div>
     <div class="p-2">
@@ -40,9 +40,9 @@
           <div class="cardStyle position-relative border mb-2 rounded overflow-hidden p-2">
             <div class="p-2 text-center">
               <div class="errorTitle">
-                <!-- Add font awesome icon to the page //-->
-                <fa-icon class="faIconStyle" [icon]="['fas', 'exclamation-triangle']" [fixedWidth]="true">
-                </fa-icon>
+                <span class="d-flex justify-content-center align-items-center">
+                  <mat-icon>report_problem</mat-icon>
+                </span>
               </div>
               <div class="errorStatus">
                 <!-- Status value //-->
@@ -61,9 +61,9 @@
         <div class="cardStyle position-relative border mb-2 rounded overflow-hidden">
           <div class="p-2 text-center">
             <div class="errorTitle">
-              <!-- Add font awesome icon to the page //-->
-              <fa-icon class="faIconStyle" [icon]="['fas', 'exclamation-triangle']" [fixedWidth]="true">
-              </fa-icon>
+              <span class="d-flex justify-content-center align-items-center">
+                <mat-icon>report_problem</mat-icon>
+              </span>
             </div>
             <div class="errorStatus">
               <!-- Status value //-->
@@ -79,4 +79,3 @@
     </div>
   </div>
 </div>
-

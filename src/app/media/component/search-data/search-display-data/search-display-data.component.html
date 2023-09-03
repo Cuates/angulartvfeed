@@ -21,48 +21,51 @@
         {{ mediaItems.actionstatus }}</div>
       <div class="d-flex flex-wrap justify-content-evenly">
         <div class="d-flex pb-2">
-          <a href="{{ urlPrefix }}{{ mediaItems.titlelong }}" target="_blank" rel="noopener noreferrer nofollow" class="text-decoration-none">
+          <a href="{{ urlPrefix }}{{ mediaItems.titleshort }}" target="_blank" rel="noopener noreferrer nofollow" class="text-decoration-none">
             <button mat-flat-button id="view" class="viewButton text-decoration-none rounded p-2" [disabled]="mediaItems.isPressedButton">
-              <!-- Add font awesome icon to the page //-->
-              <fa-icon class="faIconStyle" [icon]="['fas', 'external-link-alt']" [fixedWidth]="true">
-              </fa-icon>
-              View
+              <span class="d-flex justify-content-center align-items-center">
+                <mat-icon>open_in_new</mat-icon>
+                &nbsp;View
+              </span>
             </button>
           </a>
         </div>
         <!-- Only display the button if a certain criteria is met //-->
         <div class="pb-2" *ngIf="mediaItems.actionstatus === '1' || mediaItems.actionstatus === '0'" #buttonLoad>
           <button mat-flat-button id="retain" class="retainButton text-decoration-none rounded p-2" (click)="handleAlterationPut(mediaItems.titlelong, mediaItems.titleshort, mediaItems.publishdate, '2', i, mediaItems, 'Retain')" [disabled]="mediaItems.isPressedButton">
-            <!-- Add font awesome icon to the page //-->
-            <fa-icon class="faIconStyle" [icon]="['fas', 'thumbs-up']" [fixedWidth]="true">
-            </fa-icon>
-            Retain
-            <!-- Add font awesome icon to the page with spinner if a certain criteria is met //-->
-            <fa-icon class="faIconStyle" [icon]="['fas', 'spinner']" [spin]="true" [fixedWidth]="true" *ngIf="mediaItems.buttonRetainIsLoading">
-            </fa-icon>
+            <span class="d-flex justify-content-center align-items-center">
+              <mat-icon>thumb_up</mat-icon>
+              &nbsp;Retain
+              <div class="d-flex justify-content-center align-items-center" *ngIf="mediaItems.buttonRetainIsLoading">
+                <mat-spinner>
+                </mat-spinner>
+              </div>
+            </span>
           </button>
         </div>
         <!-- Only display the button if a certain criteria is met //-->
         <div class="pb-2" *ngIf="mediaItems.actionstatus === '2' || mediaItems.actionstatus === '0'">
           <button mat-flat-button id="ignore" class="ignoreButton text-decoration-none rounded p-2" (click)="handleAlterationPut(mediaItems.titlelong, mediaItems.titleshort, mediaItems.publishdate, '1', i, mediaItems, 'Ignore')" [disabled]="mediaItems.isPressedButton">
-            <!-- Add font awesome icon to the page //-->
-            <fa-icon class="faIconStyle" [icon]="['fas', 'thumbs-down']" [fixedWidth]="true">
-            </fa-icon>
-            Ignore
-            <!-- Add font awesome icon to the page if a certain criteria is met //-->
-            <fa-icon class="faIconStyle" [icon]="['fas', 'spinner']" [spin]="true" [fixedWidth]="true" *ngIf="mediaItems.buttonIgnoreIsLoading">
-            </fa-icon>
+            <span class="d-flex justify-content-center align-items-center">
+              <mat-icon>thumb_down</mat-icon>
+              &nbsp;Ignore
+              <div class="d-flex justify-content-center align-items-center" *ngIf="mediaItems.buttonIgnoreIsLoading">
+                <mat-spinner>
+                </mat-spinner>
+              </div>
+            </span>
           </button>
         </div>
         <div>
           <button mat-flat-button id="delete" class="deleteButton text-decoration-none rounded p-2" (click)="handleAlterationDelete(mediaItems.titlelong, i, mediaItems, 'Delete')" [disabled]="mediaItems.isPressedButton">
-            <!-- Add font awesome icon to the page //-->
-            <fa-icon class="faIconStyle" [icon]="['fas', 'trash-alt']" [fixedWidth]="true">
-            </fa-icon>
-            Delete
-            <!-- Add font awesome icon to the page if a certain criteria is met //-->
-            <fa-icon class="faIconStyle" [icon]="['fas', 'spinner']" [spin]="true" [fixedWidth]="true" *ngIf="mediaItems.buttonDeleteIsLoading">
-            </fa-icon>
+            <span class="d-flex justify-content-center align-items-center">
+              <mat-icon>delete</mat-icon>
+              &nbsp;Delete
+              <div class="d-flex justify-content-center align-items-center" *ngIf="mediaItems.buttonDeleteIsLoading">
+                <mat-spinner>
+                </mat-spinner>
+              </div>
+            </span>
           </button>
         </div>
       </div>
@@ -76,9 +79,9 @@
           <div class="cardStyle position-relative border mb-4 rounded overflow-hidden">
             <div class="p-2 text-center">
               <div class="errorTitle">
-	        <!-- Add font awesome icon to the page //-->
-                <fa-icon class="faIconStyle" [icon]="['fas', 'exclamation-triangle']" [fixedWidth]="true">
-                </fa-icon>
+                <span class="d-flex justify-content-center align-items-center">
+                  <mat-icon>report_problem</mat-icon>
+                </span>
               </div>
               <div class="errorStatus">
                 <!-- Status value //-->
@@ -97,9 +100,9 @@
         <div class="cardStyle position-relative border mb-4 rounded overflow-hidden">
           <div class="p-2 text-center">
             <div class="errorTitle">
-              <!-- Add font awesome icon to the page //-->
-              <fa-icon class="faIconStyle" [icon]="['fas', 'exclamation-triangle']" [fixedWidth]="true">
-              </fa-icon>
+              <span class="d-flex justify-content-center align-items-center">
+                <mat-icon>report_problem</mat-icon>
+              </span>
             </div>
             <div class="errorStatus">
               <!-- Status value //-->

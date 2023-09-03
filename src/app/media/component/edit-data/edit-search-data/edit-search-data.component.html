@@ -1,4 +1,4 @@
-<div class="pageStyle p-2">
+<div class="pageStyle pt-2 ps-2 pe-2">
   <div class="displayContainer">
     <div class="pageTitleContainer pt-2 pb-2 d-flex justify-content-evenly flex-wrap">
       <div class="pb-2">
@@ -10,20 +10,20 @@
           </button>
           <mat-error *ngIf="titlelongForm.invalid" class="rounded text-center">
             <div class="p-1">
-              {{ getInputErrorMessage(titlelongForm) }}
-	      <!-- Add font awesome icon to the page //-->
-              <fa-icon class="faIconStyle" [icon]="['fas', 'exclamation-triangle']" [fixedWidth]="true">
-              </fa-icon>
+              <span class="d-flex justify-content-center align-items-center">
+                {{ getInputErrorMessage(titlelongForm) }}
+                <mat-icon>report_problem</mat-icon>
+              </span>
             </div>
           </mat-error>
         </mat-form-field>
       </div>
       <div class="pb-2">
         <button mat-flat-button class="buttonStyle border-0 rounded"[disabled]="titlelongForm.invalid" value="Search" (click)="searchButton(titlelong.value)">
-          <!-- Add font awesome icon to the page //-->
-          <fa-icon class="faIconStyle" [icon]="['fas', 'search']" [fixedWidth]="true">
-          </fa-icon>
-          Search
+          <span class="d-flex justify-content-left align-items-center">
+            <mat-icon>search</mat-icon>
+            &nbsp;Search
+          </span>
         </button>
       </div>
     </div>
@@ -54,9 +54,9 @@
           <div class=" position-relative border mb-2 rounded overflow-hidden p-2">
             <div class="p-2 text-center">
               <div class="errorTitle">
-	        <!-- Add font awesome icon to the page //-->
-                <fa-icon class="faIconStyle" [icon]="['fas', 'exclamation-triangle']" [fixedWidth]="true">
-                </fa-icon>
+                <span class="d-flex justify-content-center align-items-center">
+                  <mat-icon>report_problem</mat-icon>
+                </span>
               </div>
               <div class="errorStatus">
                 <!-- Status value //-->
@@ -75,9 +75,9 @@
         <div class="cardStyle position-relative border mb-2 rounded overflow-hidden">
           <div class="p-2 text-center">
             <div class="errorTitle">
-	      <!-- Add font awesome icon to the page //-->
-              <fa-icon class="faIconStyle" [icon]="['fas', 'exclamation-triangle']" [fixedWidth]="true">
-              </fa-icon>
+              <span class="d-flex justify-content-center align-items-center">
+                <mat-icon>report_problem</mat-icon>
+              </span>
             </div>
             <div class="errorStatus">
               <!-- Status value //-->
@@ -93,4 +93,3 @@
     </div>
   </div>
 </div>
-

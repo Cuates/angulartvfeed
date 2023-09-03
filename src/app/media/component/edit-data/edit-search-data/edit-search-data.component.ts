@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Title } from '@angular/platform-browser';
 
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 
 import { Output, EventEmitter } from '@angular/core';
 
@@ -24,7 +24,7 @@ export class EditSearchDataComponent implements OnInit {
   constructor(private titleService:Title, private setVariableService: SetVariableService, private getDataService: GetDataService) { }
 
   // Set form control with possible validators
-  titlelongForm = new FormControl('', [Validators.required, Validators.pattern(this.setVariableService.titlelongFormPattern)]);
+  titlelongForm = new UntypedFormControl('', [Validators.required, Validators.pattern(this.setVariableService.titlelongFormPattern)]);
 
   // Set the media data to empty array
   mediaData: any = [];
@@ -128,6 +128,6 @@ export class EditSearchDataComponent implements OnInit {
   // Clear input field
   clearInputField(){
     // Set form control with possible validators
-    this.titlelongForm = new FormControl('', [Validators.required, Validators.pattern(this.setVariableService.titlelongFormPattern)]);
+    this.titlelongForm = new UntypedFormControl('', [Validators.required, Validators.pattern(this.setVariableService.titlelongFormPattern)]);
   }
 }

@@ -1,4 +1,4 @@
-<div class="pageStyle p-2">
+<div class="pageStyle pt-2 ps-2 pe-2">
   <div class="displayContainer">
     <div class="pageTitleContainer pt-2 d-flex justify-content-evenly flex-wrap">
       <div class="pb-2">
@@ -57,9 +57,11 @@
       </div>
       <div class="pb-2">
         <button mat-flat-button class="buttonStyle border-0 rounded" value="Search" (click)="searchButton(titlelong.value, titleshort.value, actionstatus.value, limit.value, sort.value)">
-        <fa-icon class="faIconStyle" [icon]="['fas', 'search']" [fixedWidth]="true">
-        </fa-icon>
-        Search</button>
+          <span class="d-flex justify-content-left align-items-center">
+            <mat-icon>search</mat-icon>
+            &nbsp;Search
+          </span>
+        </button>
       </div>
     </div>
     <div class="p-2">
@@ -87,9 +89,9 @@
           <div class="cardStyle position-relative border mb-4 rounded overflow-hidden p-2">
             <div class="p-2 text-center">
               <div class="errorTitle">
-                <!-- Add font awesome icon to the page //-->
-                <fa-icon class="faIconStyle" [icon]="['fas', 'exclamation-triangle']" [fixedWidth]="true">
-                </fa-icon>
+                <span class="d-flex justify-content-center align-items-center">
+                  <mat-icon>report_problem</mat-icon>
+                </span>
               </div>
               <div class="errorStatus">
                 <!-- Status value //-->
@@ -108,9 +110,9 @@
         <div class="cardStyle position-relative border mb-4 rounded overflow-hidden">
           <div class="p-2 text-center">
             <div class="errorTitle">
-              <!-- Add font awesome icon to the page //-->
-              <fa-icon class="faIconStyle" [icon]="['fas', 'exclamation-triangle']" [fixedWidth]="true">
-              </fa-icon>
+              <span class="d-flex justify-content-center align-items-center">
+                <mat-icon>report_problem</mat-icon>
+              </span>
             </div>
             <div class="errorStatus">
               <!-- Status value //-->

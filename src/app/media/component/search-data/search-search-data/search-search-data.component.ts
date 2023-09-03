@@ -4,7 +4,7 @@ import { Title } from '@angular/platform-browser';
 
 import { Output, EventEmitter } from '@angular/core';
 
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 import { SetVariableService } from '../../../share/service/global/set-variable.service';
 import { GetDataService } from '../../../share/service/api/get-data.service';
@@ -25,11 +25,11 @@ export class SearchSearchDataComponent implements OnInit {
   title = 'Media Search';
 
   // Set form control with possible validators
-  titlelongForm = new FormControl('');
-  titleshortForm = new FormControl('');
-  actionstatusForm = new FormControl('0');
-  limitForm = new FormControl('25');
-  sortForm = new FormControl('desc');
+  titlelongForm = new UntypedFormControl('');
+  titleshortForm = new UntypedFormControl('');
+  actionstatusForm = new UntypedFormControl('0');
+  limitForm = new UntypedFormControl('25');
+  sortForm = new UntypedFormControl('desc');
 
   // Set input field back to empty string when button is pressed
   inputTitleLong:string = '';

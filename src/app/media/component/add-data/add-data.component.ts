@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild, Inject, LOCALE_ID } from '@an
 
 import { Title } from '@angular/platform-browser';
 
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 
 import { SetVariableService } from '../../share/service/global/set-variable.service';
 import { PostDataService } from '../../share/service/api/post-data.service';
@@ -23,11 +23,11 @@ export class AddDataComponent implements OnInit {
   @ViewChild('publishdate', { static: true }) publishdateValue!: ElementRef;
 
   // Set form control with possible validators
-  titlelongForm = new FormControl('', [Validators.required, Validators.pattern(this.setVariableService.titlelongFormPattern)]);
-  titleshortForm = new FormControl('', [Validators.required, Validators.pattern(this.setVariableService.titleshortFormPattern)]);
-  dateControl = new FormControl(new Date());
+  titlelongForm = new UntypedFormControl('', [Validators.required, Validators.pattern(this.setVariableService.titlelongFormPattern)]);
+  titleshortForm = new UntypedFormControl('', [Validators.required, Validators.pattern(this.setVariableService.titleshortFormPattern)]);
+  dateControl = new UntypedFormControl(new Date());
 
-  actionstatusForm = new FormControl('', [Validators.required, Validators.pattern(this.setVariableService.actionstatusFormPattern)]);
+  actionstatusForm = new UntypedFormControl('', [Validators.required, Validators.pattern(this.setVariableService.actionstatusFormPattern)]);
 
   // Response from API call
   dataResponse: any = [];
@@ -124,14 +124,14 @@ export class AddDataComponent implements OnInit {
           // Check if the return status message is success
           if (this.statusResponse === 'Success') {
             // Get date to display on a form's input field
-            this.dateControl = new FormControl(new Date());
+            this.dateControl = new UntypedFormControl(new Date());
 
             // Set input fields status to empty
-            this.titlelongForm = new FormControl('', [Validators.required, Validators.pattern(this.setVariableService.titlelongFormPattern)]);
-            this.titleshortForm = new FormControl('', [Validators.required, Validators.pattern(this.setVariableService.titleshortFormPattern)]);
+            this.titlelongForm = new UntypedFormControl('', [Validators.required, Validators.pattern(this.setVariableService.titlelongFormPattern)]);
+            this.titleshortForm = new UntypedFormControl('', [Validators.required, Validators.pattern(this.setVariableService.titleshortFormPattern)]);
 
             // Set action status to empty
-            this.actionstatusForm = new FormControl('', [Validators.required, Validators.pattern(this.setVariableService.actionstatusFormPattern)]);
+            this.actionstatusForm = new UntypedFormControl('', [Validators.required, Validators.pattern(this.setVariableService.actionstatusFormPattern)]);
           }
         },
         // complete: () => {

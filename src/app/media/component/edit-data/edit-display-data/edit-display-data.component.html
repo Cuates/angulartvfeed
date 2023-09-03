@@ -24,10 +24,10 @@
           </button>
           <mat-error *ngIf="titleshortForm.invalid" class="rounded text-center">
             <div class="p-1">
-              {{ getInputErrorMessage(titleshortForm) }}
-	      <!-- Add font awesome icon to the page //-->
-              <fa-icon class="faIconStyle" [icon]="['fas', 'exclamation-triangle']" [fixedWidth]="true">
-              </fa-icon>
+              <span class="d-flex justify-content-center align-items-center">
+                {{ getInputErrorMessage(titleshortForm) }}
+                <mat-icon>report_problem</mat-icon>
+              </span>
             </div>
           </mat-error>
         </mat-form-field>
@@ -43,13 +43,14 @@
       <div class="d-flex flex-wrap justify-content-evenly">
         <div>
           <button mat-flat-button id="edit" [disabled]="titleshortForm.invalid || mediaItems.buttonUpdateIsLoading" class="editButton text-decoration-none rounded p-2" (click)="handleAlterationPut(mediaItems.titlelong, titleshort.value, mediaItems.publishdate, mediaItems.actionstatus, i, mediaItems, 'Edit')">
-            <!-- Add font awesome icon to the page //-->
-            <fa-icon class="faIconStyle" [icon]="['fas', 'edit']" [fixedWidth]="true">
-            </fa-icon>
-            Update
-            <!-- Add font awesome icon to the page if a certain criteria is met //-->
-            <fa-icon class="faIconStyle" [icon]="['fas', 'spinner']" [spin]="true" [fixedWidth]="true" *ngIf="mediaItems.buttonUpdateIsLoading">
-            </fa-icon>
+            <span class="d-flex justify-content-left align-items-center">
+              <mat-icon>edit</mat-icon>
+              &nbsp;Update
+              <div class="d-flex justify-content-center align-items-center" *ngIf="mediaItems.buttonUpdateIsLoading">
+                <mat-spinner>
+                </mat-spinner>
+              </div>
+            </span>
           </button>
         </div>
       </div>
@@ -63,9 +64,9 @@
           <div class="cardStyle position-relative border mb-2 rounded overflow-hidden">
             <div class="p-2 text-center">
               <div class="errorTitle">
-                <!-- Add font awesome icon to the page //-->
-                <fa-icon class="faIconStyle" [icon]="['fas', 'exclamation-triangle']" [fixedWidth]="true">
-                </fa-icon>
+                <span class="d-flex justify-content-center align-items-center">
+                  <mat-icon>report_problem</mat-icon>
+                </span>
               </div>
               <div class="errorStatus">
                 <!-- Status value //-->
@@ -84,9 +85,9 @@
         <div class="cardStyle position-relative border mb-2 rounded overflow-hidden">
           <div class="p-2 text-center">
             <div class="errorTitle">
-              <!-- Add font awesome icon to the page //-->
-              <fa-icon class="faIconStyle" [icon]="['fas', 'exclamation-triangle']" [fixedWidth]="true">
-              </fa-icon>
+              <span class="d-flex justify-content-center align-items-center">
+                <mat-icon>report_problem</mat-icon>
+              </span>
             </div>
             <div class="errorStatus">
               <!-- Status value //-->
